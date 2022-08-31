@@ -30,3 +30,21 @@ header{
     margin-bottom: 20px;
 }
 
+.alerta {
+    background-color: yellow;
+}
+.agotado {
+    background-color: grey;
+}
+.cuenta{
+    display: flex;
+    justify-content: space-evenly;
+}
+.mediosyredes{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 5px;
+}
+.copyr{
+    text-align: center;
+}
