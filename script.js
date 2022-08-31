@@ -51,7 +51,7 @@ class Producto {
         this.stock = parseInt(stock);
     }
 }
-// //Declaramos un array de productos para almacenar objetos. Es un arreglo que esta vacio
+// //Declaramos un array de productos para almacenar objetos. 
 const productosTotales = [
     { nombre: "esparragos", precio: 700, stock: 4, carro: 0 },
     { nombre: "brocoli", precio: 800, stock: 3, carro: 0 },
@@ -73,7 +73,7 @@ for (let listado of productos) {
 
 // console.log("bienvenidos a venta de productos congelados")
 let cantProductos = 0;
-let valor = "SI";
+let valor = "si";
 //while . ciclo para ir sumando productos. que se repite mientras el usuario ingrese si y se corta cuando el usuario ingrese no/ESC
 while (cantProductos >= 0) {
     
