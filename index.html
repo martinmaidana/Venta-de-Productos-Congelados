@@ -7,16 +7,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./style.css">
+    <style>
+        .colorazul {
+            color: rgb(60, 60, 135);
+        }
+
+        .fondoceleste {
+            background-color: aquamarine;
+        }
+    </style>
 </head>
 
 <body>
     <header>
-        <h1>VENTA DE PRODUCTOS CONGELADOS</h1>
-        <h2>VEGETALES</h2>
+        <h1 id="titulo">VENTA DE PRODUCTOS CONGELADOS</h1>
+        <h2 id="subtitulo">VEGETALES</h2>
+        <div id="h3coninnerHtml"></div>
+
 
     </header>
     <main>
-        <div class="productos">
+
+        <div class="botones">
+            <label for="">Ingrese su nombre</label>
+            <input type="text" placeholder="Ingrese su nombre" id="nombre_usuario">
+            <button onclick="saludando()" type="submit">aceptar</button>
+            <br>
+            <label for="">Desea agregar productos</label>
+            <button onclick="ingresar()" type="text">SI</button>
+            <div id="ingresar_al_sistema">
+                
+            </div>
+
+        </div>
+
+        <div class="listadovegetales">
             <div class="card">
                 <img class="imagen" src="./assets/esparragos.jpg" alt="Esparragos">
                 <p>$ 700</p>
@@ -52,11 +77,12 @@
             <a href="">Vaciar carrito</a>
             <a href="">Seguir comprando</a>
             <label>EL TOTAL ES:</label>
-            <input type="text">
-            <button type="submit">SEGUIR COMPRANDO</button>
+            <input type="text" id="nombre">
+            <button onclick="continuarCompra" type="submit">Quiero seguir comprando</button>
             <button type="submit">FINALIZAR COMPRA</button>
         </div>
-        <div>
+
+        <div class="mediosdepago">
             <h3>MEDIOS DE PAGO</p>
                 <h4>Efectivo o un pago. Incluye un 10% de descuento</h4>
                 <h4>Cuotas 3 - 6 - 9 - 12. CON INTERESES</h4>
@@ -72,12 +98,23 @@
 
     </main>
     <footer>
-        <p>Seguinos en redes sociales. Instagram. Whatsaap</p>
-        <p>© 2022. Todos los Derechos reservados.</p>
+        <div id="redesfooter">
+
+        </div>
+        <ul>
+            <li>Instagram:@productos_congelados</li>
+            <li>Whatsap:+54 555-5555</li>
+            <li>Twitter:Proximante</li>
+            <li>Facebook:Proximamente.</li>
+        </ul>
+
+        <h6>© 2022. Todos los Derechos reservados.</h6>
+
+
 
     </footer>
 
-    <script src="./script.js"></script>
+    <script src="./script1.js"></script>
 </body>
 
 </html>
