@@ -1,50 +1,97 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box; }
+    box-sizing: border-box;
+}
 
-header{
+header {
     text-align: center;
 }
-.botones{
-   text-align: center; 
-   margin: 12px;
-}
-.imagen{
-    width: 100px ;
-    height: 100px ;
+
+.botones {
+    text-align: center;
+    margin: 12px;
 }
 
-.listadovegetales{
-    display:flex;
+.imagen {
+    width: 100px;
+    height: 100px;
+}
+
+.listadovegetales {
+    width: 70%;
+    display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
-    
-    
+
+
 }
-.card{
-    background-color:rgb(128, 240, 143);
+
+.card {
+    background-color: rgb(128, 240, 143);
     padding: 20px;
-    border-radius:10px;
-    box-shadow:25px 58px -12px rgba(0,0,0,0.5);
+    border-radius: 10px;
+    box-shadow: 25px 58px -12px rgba(0, 0, 0, 0.5);
     margin-bottom: 20px;
+    text-align: center;
 }
 
 .alerta {
     background-color: yellow;
 }
+
 .agotado {
     background-color: grey;
 }
-.cuenta{
+
+.cuenta {
     display: flex;
+    flex-direction: column;
     justify-content: space-evenly;
 }
-.mediosyredes{
+
+.mediosyredes {
     display: flex;
     justify-content: space-evenly;
     margin-top: 5px;
 }
-.copyr{
+
+.copyr {
     text-align: center;
+}
+
+
+.aside {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+.separador {
+    width: 20%;
+    height: 100%;
+    background-color: rgb(128, 240, 143);
+}
+
+.carro {
+    max-width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.carro article {
+    max-width: 200px;
+    display: flex;
+    align-items: center;
+    border: 1px solid white;
+}
+
+.carro article .imgContainer {
+    box-sizing: border-box;
+}
+
+.carro article .imgContainer img {
+    display: block;
+    width: 40px;
 }

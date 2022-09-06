@@ -24,10 +24,6 @@
         <h2 id="subtitulo">VEGETALES</h2>
         <div id="h3coninnerHtml"></div>
 
-
-    </header>
-    <main>
-
         <div class="botones">
             <label for="">Desea agregar productos(Ingrese su nombre)</label>
             <input type="text" placeholder="Ingrese su nombre" id="nombre_usuario">
@@ -42,23 +38,38 @@
 
             </div>
 
-        </div>
+    </header>
+    <main>
+        <aside class="aside">
+            <div class="separador">
+                <div class="visual">
 
-        <div class="listadovegetales">
+                </div>
+                <div class="carro">
+                </div>
+                <div class="cuenta">
+                    <label>EL TOTAL ES:</label>
+                    <input type="text" id="costoTotal">
+                    <button id="btn_continuarCompra" type="submit">Quiero seguir comprando</button>
+                    <button id="btn_finalizarCompra" type="submit">FINALIZAR COMPRA</button>
+                </div>
+            </div>
 
-        </div>
+            <div class="listadovegetales">
 
-        <div class="cuenta">
-            <label>EL TOTAL ES:</label>
-            <input type="text" id="nombre">
-            <button onclick="continuarCompra" type="submit">Quiero seguir comprando</button>
-            <button type="submit">FINALIZAR COMPRA</button>
-        </div>
-
+            </div>
+        </aside>
 
     </main>
     <footer>
-
+        <form action="" id="form">
+            <label for="">Dudas o sugerencias</label>
+            <br>
+            <textarea name="" id="comentario" cols="30" rows="10" placeholder="Inserte su comentario"></textarea>
+            <br>
+            <button>Enviar</button>
+            <br>
+        </form>
         <div class="mediosyredes">
             <div class="mediosdepago">
                 <h3>MEDIOS DE PAGO</p>
