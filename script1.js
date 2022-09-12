@@ -31,26 +31,47 @@ subtitulo.addEventListener("mouseout", function () {
 //defini una variable con un valor vacio. para usarlo en una funcion
 let valor = ("");
 /*en la funcion interactuo con el html. si en el input ingresan su nombre, recibiran un saludo con el nombre ingresado al final. que tb se muestra en la consola. De lo contrario recibiran un mensaje que indica que tienen que ingresar su nombre.  ademas use Value para conectar el valor ingresado y volcarlo en el html*/
+let nombre = document.getElementById("nombre_usuario");
+nombre.addEventListener("keypress", function (e) {
+    if (e.keyCode == 13) {
+        saludando()
+    }
+})
+
+
+
+
+
+// Crear array de usuarios
+let usuarios = [];
+
+if (localStorage.getItem("usuarios")) {
+    usuarios = JSON.parse(localStorage.getItem("usuarios"));
+    botones = document.querySelector('.botones')
+    botones.innerHTML = `
+<label for="">Bienvenido ${usuarios[0]}</label>
+            <hr> <button onclick="logoff()" type="submit">Cerrar sesión</button>`
+}
+
+function logoff() {
+    localStorage.clear();
+    location.reload();
+}
+
 function saludando() {
-    let nombre = document.getElementById("nombre_usuario");
     let ingreso_al_sistma = document.getElementById("ingresar_al_sistema");
-    console.log("<--------Bienvenidos a venta de productos congelados------->", nombre.value);
-    nombre.addEventListener("keydown", function (e) {
-        if (e.key == "t") {
-            console.log("escribiste t");
-        }
-    })
-
-
     if (nombre.value != valor) {
-        ingreso_al_sistma.innerHTML = "<p><--------Bienvenidos a venta de productos congelados-------></p>" + nombre.value;
+        usuarios.push(nombre.value);
+        let encUsuarios = JSON.stringify(usuarios);
+        localStorage.setItem('usuarios', encUsuarios);
+        location.reload();
     }
     else {
         ingreso_al_sistma.innerHTML = "<p>Para poder operar, tenes que ingresar un nombre</p>";
         console.log("tenes que ingresar un valor")
     }
-
 }
+
 
 
 //cree un array de objetos. la clase Producto tiene las variables que voy a utilizar. nombre es reconocido como string y precio y stock son reconocidos como numeros. 
@@ -114,23 +135,54 @@ for (var j = 0; j < addButton.length; j++) {
 }
 
 
+
 function updateCarrito() {
     let i = 1;
     // usando query selector .  ingrese las etiquetas div al html y con for of, recorri el array de objetos. con if . else if y else en funcion del stock y usando clases de css diferencie si el stock esta por agotarse o esta agotado.
     let data = '';
     const cards = document.querySelector('.carro');
-    for (let listado of productos) {
-        data += `<article>
+    for (let productosTotales of productos) {
+        if (productosTotales.carro !== 0) {
+            data += `<article>
         <div class="imgContainer">
-            <img src="./assets/${listado.img}" alt="${listado.name}" />
+            <img src="./assets/${productosTotales.img}" alt="${productosTotales.name}" />
         </div>
-        <p>Cantidad: ${listado.carro}</p>
+        <p>Cantidad: ${productosTotales.carro}</p>
+        <p>Precio: ${productosTotales.precio}</p>
+        <button class="botonBorrar borrar_elemento" id="${productosTotales.id}">Borrar</button>
     </article>`
+        }
         cards.innerHTML = data;
         i++
+        let botones_borrar = document.querySelectorAll(".borrar_elemento");
+        for (let boton of botones_borrar) {
+            boton.addEventListener("click", borrar_producto);
+        }
+
     }
     calcularPreciototal()
 }
+
+function borrar_producto(e) {
+    // let padre = e.target.parentNode;
+    // console.log(e.target.id);
+    productosTotales[e.target.id - 1].carro = 0
+    updateCarrito()
+
+}
+
+let btn_carrito = document.getElementById("mostrar_carrito");
+btn_carrito.addEventListener("click", function () {
+    let carrito = document.getElementById("carrito");
+
+    if (carrito.style.display != "none") {
+        carrito.style.display = "none";
+    }
+    else {
+        carrito.style.display = "block";
+    }
+})
+
 
 function calcularPreciototal() {
     const productosAdquiridos = productos.filter((producto) => producto.carro > 0);
@@ -169,7 +221,7 @@ let form = document.getElementById("form");
 form.addEventListener("submit", function (e) {
     e.preventDefault();
     let coment = document.getElementById("comentario");
-        console.log(" El comentario es :", comentario.value);
+    console.log(" El comentario es :", comentario.value);
 
 })
 
