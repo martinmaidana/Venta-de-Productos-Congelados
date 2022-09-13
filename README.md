@@ -23,3 +23,12 @@ linea 168 evento submit.
 4-  81 CREO UN CLASE
 
 5- LINEA 90 CREO UN ARRAY DE OBJETOS
+
+6_ a partir de la linea 143. creo un carrito y sus interacciones del html con js. linea 143
+Con inner html voy agrgando foto en miniatura, cantidad, precio y un boton borrar en el carrito. 
+a su vez creo una funcion que suma el precio total de los productos adquiridos. linea 169.
+linea 171 la funcion borrar carrito. permite borrar el producto cargado, no importa la cantidad del mismo que se haya añadido al carrito. con solo apretar borrar, tb resta el precio del importe total.
+Linea 192 funcion que suma el total de los productos adquiridos.
+
+
+

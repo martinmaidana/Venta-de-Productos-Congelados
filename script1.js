@@ -125,7 +125,7 @@ for (let listado of productos) {
     i++
 }
 
-//Detectar la funcion Añadir al carrito
+//Detectar la funcion Añadir al carrito.
 let addButton = document.getElementsByClassName("addButton");
 var myFunction = function () {
     var attribute = this.getAttribute("itemID");
@@ -145,6 +145,8 @@ function updateCarrito() {
     // usando query selector .  ingrese las etiquetas div al html y con for of, recorri el array de objetos. con if . else if y else en funcion del stock y usando clases de css diferencie si el stock esta por agotarse o esta agotado.
     let data = '';
     const cards = document.querySelector('.carro');
+    //si cada producto es distinto de 0 se agregara al carrito. con el boton borrar se podra eliminar.
+
     for (let productosTotales of productos) {
         if (productosTotales.carro !== 0) {
             data += `<article>
@@ -166,7 +168,7 @@ function updateCarrito() {
     }
     calcularPreciototal()
 }
-
+// con esta funcion puedo eliminar el elemento agregado a nuestro carrito
 function borrar_producto(e) {
     // let padre = e.target.parentNode;
     // console.log(e.target.id);
@@ -174,7 +176,7 @@ function borrar_producto(e) {
     updateCarrito()
 
 }
-
+//cree un boton para mostrar y ocultar el carrito
 let btn_carrito = document.getElementById("mostrar_carrito");
 btn_carrito.addEventListener("click", function () {
     let carrito = document.getElementById("carrito");
@@ -187,7 +189,7 @@ btn_carrito.addEventListener("click", function () {
     }
 })
 
-
+// sumo el total de productos añadidos al carrito
 function calcularPreciototal() {
     const productosAdquiridos = productos.filter((producto) => producto.carro > 0);
     let costoTotal = 0;
