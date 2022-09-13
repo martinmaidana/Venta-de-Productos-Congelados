@@ -10,7 +10,7 @@ titulo.className = "fondoceleste";
 
 //innerText de un nodo nos permite modificar su nodo de texto "pisando el html" En este caso cambie el texto del H1.
 console.log(titulo.innerText);
-titulo.innerText = "VENTA DE PRODUCTOS CONGELADOS - generado desde JS ";
+titulo.innerText = "VENTA DE PRODUCTOS CONGELADOS";
 
 //innerHTML permite definir el código html interno a traves de JS. En este caso agregue UN H3 debajo del h1 y h2.
 let subth3 = document.getElementById("h3coninnerHtml");
@@ -30,7 +30,7 @@ subtitulo.addEventListener("mouseout", function () {
 
 //defini una variable con un valor vacio. para usarlo en una funcion
 let valor = ("");
-/*en la funcion interactuo con el html. si en el input ingresan su nombre, recibiran un saludo con el nombre ingresado al final. que tb se muestra en la consola. De lo contrario recibiran un mensaje que indica que tienen que ingresar su nombre.  ademas use Value para conectar el valor ingresado y volcarlo en el html*/
+/*en la funcion interactuo con el html. si en el input ingresan su nombre, recibiran un saludo con el nombre ingresado al final. que tb se muestra en la consola. De lo contrario recibiran un mensaje que indica que tienen que ingresar su nombre.  ademas use Value para conectar el valor ingresado y volcarlo en el html. Añado evento con Enter al input*/
 let nombre = document.getElementById("nombre_usuario");
 nombre.addEventListener("keypress", function (e) {
     if (e.keyCode == 13) {
@@ -44,24 +44,28 @@ nombre.addEventListener("keypress", function (e) {
 
 // Crear array de usuarios
 let usuarios = [];
-
+//capturo un dato al storage local. accedo a los datos a traves de getitem
 if (localStorage.getItem("usuarios")) {
+    // transformo el objeto a Json
     usuarios = JSON.parse(localStorage.getItem("usuarios"));
     botones = document.querySelector('.botones')
+    //despues de acceder al dato. la accedo al boton cerrar sesion
     botones.innerHTML = `
 <label for="">Bienvenido ${usuarios[0]}</label>
             <hr> <button onclick="logoff()" type="submit">Cerrar sesión</button>`
 }
-
+// con esta funcion remuevo y elimino la inforamcion previamente guardada en el storage. y reincia la  posibilidad de cargar un dato nuevamente en el input
 function logoff() {
     localStorage.clear();
     location.reload();
 }
-
+// con dom me traigo el id de un input
 function saludando() {
     let ingreso_al_sistma = document.getElementById("ingresar_al_sistema");
     if (nombre.value != valor) {
         usuarios.push(nombre.value);
+        //JSON.stringify transforme un objeto  a un string en formato JSON.  asi puedo recuperarlo
+
         let encUsuarios = JSON.stringify(usuarios);
         localStorage.setItem('usuarios', encUsuarios);
         location.reload();

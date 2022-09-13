@@ -26,9 +26,6 @@ console.log(clases);
 
 
 
-
-
-
 //FOOTER
 let redessociales = document.createElement("h4");
 redessociales.innerText = "Seguinos en redes sociales";
