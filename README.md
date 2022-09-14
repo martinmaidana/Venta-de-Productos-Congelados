@@ -31,4 +31,15 @@ linea 171 la funcion borrar carrito. permite borrar el producto cargado, no impo
 Linea 192 funcion que suma el total de los productos adquiridos.
 
 
+//OPERADORES AVANZADOS
+
+LINEA 43 OPTIMIZACION DEL EVENTO ENTER
+
+EL FOR OF for (let listado of productos) : REALICE LA DESestructuracion DEL ARRAY DE OBJETOS "listado".
+
+
+Dentro de ----var myFunction = function ()--- añadi un operador ternario para evitar la carga de productos con stock = 0.
+
+
+
 

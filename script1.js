@@ -3,13 +3,13 @@
 
 //Accediendo al nodo a traves de get element by ID
 let titulo = document.getElementById("titulo");
-console.log(titulo);
+// console.log(titulo);
 //defini un atributo de clase en el h1. que tiene un background color para poner el fondo celeste
 titulo.className = "fondoceleste";
 
 
 //innerText de un nodo nos permite modificar su nodo de texto "pisando el html" En este caso cambie el texto del H1.
-console.log(titulo.innerText);
+// console.log(titulo.innerText);
 titulo.innerText = "VENTA DE PRODUCTOS CONGELADOS";
 
 //innerHTML permite definir el código html interno a traves de JS. En este caso agregue UN H3 debajo del h1 y h2.
@@ -17,7 +17,7 @@ let subth3 = document.getElementById("h3coninnerHtml");
 subth3.innerHTML = "<h3 class='colorazul'>Listado de vegetales</h3>";
 
 let subtitulo = document.getElementById("subtitulo");
-console.log(subtitulo);
+// console.log(subtitulo);
 //mouseover/mouseout en el subtitulo vegetales. cambiando el color rojo al pasar el maouse y retorna a negro al sacar el maouse
 subtitulo.addEventListener("mouseover", function () {
     this.style.color = '#ff0000';
@@ -33,9 +33,8 @@ let valor = ("");
 /*en la funcion interactuo con el html. si en el input ingresan su nombre, recibiran un saludo con el nombre ingresado al final. que tb se muestra en la consola. De lo contrario recibiran un mensaje que indica que tienen que ingresar su nombre.  ademas use Value para conectar el valor ingresado y volcarlo en el html. Añado evento con Enter al input*/
 let nombre = document.getElementById("nombre_usuario");
 nombre.addEventListener("keypress", function (e) {
-    if (e.keyCode == 13) {
-        saludando()
-    }
+    //optimizacion
+    e.keyCode === 13 && saludando()
 })
 
 
@@ -63,16 +62,16 @@ function logoff() {
 function saludando() {
     let ingreso_al_sistma = document.getElementById("ingresar_al_sistema");
     if (nombre.value != valor) {
+
         usuarios.push(nombre.value);
         //JSON.stringify transforme un objeto  a un string en formato JSON.  asi puedo recuperarlo
-
         let encUsuarios = JSON.stringify(usuarios);
         localStorage.setItem('usuarios', encUsuarios);
         location.reload();
     }
     else {
         ingreso_al_sistma.innerHTML = "<p>Para poder operar, tenes que ingresar un nombre</p>";
-        console.log("tenes que ingresar un valor")
+        // console.log("tenes que ingresar un valor")
     }
 }
 
@@ -97,6 +96,10 @@ const productosTotales = [
     { id: 6, nombre: "Esparragos", precio: 700, stock: 4, carro: 0, img: 'esparragos.jpg' },
 ];
 
+
+
+
+
 const productos = productosTotales.filter((producto) => producto.stock >= 0);
 
 let i = 1;
@@ -104,22 +107,25 @@ let i = 1;
 let data = '';
 let vstock = '';
 const cards = document.querySelector('.listadovegetales');
-console.log("Lista de productos");
+// console.log("Lista de productos");
 for (let listado of productos) {
-    if (listado.stock == '1' || listado.stock == '2' || listado.stock == '3') {
-        vstock = `<span class="alerta">Stock ${listado.stock} - Quedan Pocas Unidades</span>`;
-    } else if (listado.stock == 0) {
-        vstock = `<span class="agotado">Stock ${listado.stock} - AGOTADO!</span>`;
+    // DESESTRUCTURAR
+    const {id, nombre, precio, stock, img} = listado
+
+    if (stock == '1' || stock == '2' || stock == '3') {
+        vstock = `<span class="alerta">Stock ${stock} - Quedan Pocas Unidades</span>`;
+    } else if (stock == 0) {
+        vstock = `<span class="agotado">Stock ${stock} - AGOTADO!</span>`;
     } else {
-        vstock = 'Stock ' + listado.stock;
+        vstock = 'Stock ' + stock;
     }
     data += `<div class="card">
-    <img class="imagen" src="./assets/${listado.img}" alt="${listado.nombre}">
-    <p>$ ${listado.precio}</p>
+    <img class="imagen" src="./assets/${img}" alt="${nombre}">
+    <p>$ ${precio}</p>
     <p>${vstock}</p>
-    <label for="number">${listado.nombre}</label>
+    <label for="number">${nombre}</label>
     <br>
-    <button class="addButton" type="submit" itemID="${listado.id}"">Añadir</button>
+    <button class="addButton" type="submit" itemID="${id}"">Añadir</button>
 </div>`
     cards.innerHTML = data;
     i++
@@ -130,7 +136,9 @@ let addButton = document.getElementsByClassName("addButton");
 var myFunction = function () {
     var attribute = this.getAttribute("itemID");
     productoSeleccionado = productos.find(obj => obj.id == attribute);
-    productoSeleccionado.carro++
+//EJEMPLO DE OPERADOR TERNARIO CON EL STOCK
+    productoSeleccionado.stock > 0 ? productoSeleccionado.carro++ : alert("no se puede agregar al carrito, no hay mas stock");
+    
     updateCarrito()
 };
 
@@ -147,8 +155,9 @@ function updateCarrito() {
     const cards = document.querySelector('.carro');
     //si cada producto es distinto de 0 se agregara al carrito. con el boton borrar se podra eliminar.
 
+ 
     for (let productosTotales of productos) {
-        if (productosTotales.carro !== 0) {
+        if (productosTotales.stock !== 0) {
             data += `<article>
         <div class="imgContainer">
             <img src="./assets/${productosTotales.img}" alt="${productosTotales.name}" />
@@ -157,8 +166,12 @@ function updateCarrito() {
         <p>Precio: ${productosTotales.precio}</p>
         <button class="botonBorrar borrar_elemento" id="${productosTotales.id}">Borrar</button>
     </article>`
-        }
-        cards.innerHTML = data;
+    
+}
+
+productosTotales.stock !== 0 && {}
+
+cards.innerHTML = data;
         i++
         let botones_borrar = document.querySelectorAll(".borrar_elemento");
         for (let boton of botones_borrar) {
@@ -189,6 +202,8 @@ btn_carrito.addEventListener("click", function () {
     }
 })
 
+
+
 // sumo el total de productos añadidos al carrito
 function calcularPreciototal() {
     const productosAdquiridos = productos.filter((producto) => producto.carro > 0);
@@ -196,7 +211,7 @@ function calcularPreciototal() {
     function operaciones() {
         costoTotal = productosAdquiridos.reduce((acumulador, elemento) => acumulador + (elemento.precio * elemento.carro), 0)
         document.getElementById("costoTotal").value = costoTotal;
-        console.log(costoTotal);
+        // console.log(costoTotal);
     }
     operaciones();
 }
@@ -213,8 +228,11 @@ btn_continuar.addEventListener("click", function () {
 //evento mousedown al presionar. mouseup al levantar el boton y ademas cambia al color amarillo el propio boton
 let btn_finalizar = document.getElementById("btn_finalizarCompra");
 btn_finalizar.addEventListener("mousedown", function presion1() {
-    console.log("pronto con este boton direccionaremos a un espacio donde puedas elegir los medios de pago");
+    // console.log("pronto con este boton direccionaremos a un espacio donde puedas elegir los medios de pago");
     document.getElementById("btn_finalizarCompra").style.backgroundColor = '#ffff00';
+    
+    const total =  document.getElementById("total")
+
 
 });
 //evento mouseup. al levantar la presion del btn izquierdo cambia a color rojo.
@@ -227,7 +245,7 @@ let form = document.getElementById("form");
 form.addEventListener("submit", function (e) {
     e.preventDefault();
     let coment = document.getElementById("comentario");
-    console.log(" El comentario es :", comentario.value);
+    // console.log(" El comentario es :", comentario.value);
 
 })
 
@@ -241,8 +259,8 @@ redessociales.className = "colorazul";
 redesfooter.append(redessociales);
 /*El método getElementsByTagName() sirve para acceder a un conjunto de elementos de la estructura HTML, utilizando su nombre de etiqueta como identificación. Utilice la etiqueta li  */
 let li = document.getElementsByTagName("li");
-console.log(li);
+// console.log(li);
 
 for (let elemento of li) {
-    console.log(elemento);
+    // console.log(elemento);
 }
