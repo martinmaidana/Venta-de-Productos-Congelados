@@ -40,6 +40,20 @@ EL FOR OF for (let listado of productos) : REALICE LA DESestructuracion DEL ARRA
 
 Dentro de ----var myFunction = function ()--- añadi un operador ternario para evitar la carga de productos con stock = 0.
 
+// AÑADIR LIBRERIAS
+
+utilizando sweet alert, añadi distintas alertas 
+
+en el boton e input de ingresar nombre. si no añadimos nada, tirara un mensaje de alerta
+
+en el boton añadir de cada card, si hay stock obtendremos un mixin alert que indicara que el producto se añadio al carrito
+
+si no hay stock deberia tirar un mensaje de alerta, que no hay mas stock.
+
+ya en el carrito. genere un mensaje de mixin alert al hacer click en el boton borrar. para eliminar productos del carrito
+
+y al hacer click en finalizar compra. aparecera un mensaje de terminar o cancelar compra que mas adelante debera conectar con el tipo de pago que quiero realizar.
+
 
 
 
