@@ -70,7 +70,25 @@ function saludando() {
         location.reload();
     }
     else {
-        ingreso_al_sistma.innerHTML = "<p>Para poder operar, tenes que ingresar un nombre</p>";
+        
+        //al apretar enter o aceptar se dispara un mensaje de alerta pidiendo ingresar un nombre para operar
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
+    
+        Toast.fire({
+            icon: 'info',
+            title: 'Para poder operar, tenes que ingresar un nombre'
+        })
+    
         // console.log("tenes que ingresar un valor")
     }
 }
@@ -93,7 +111,7 @@ const productosTotales = [
     { id: 3, nombre: "Zanahorias", precio: 1000, stock: 1, carro: 0, img: 'zanahoria.jpg' },
     { id: 4, nombre: "Zapallo", precio: 1200, stock: 6, carro: 0, img: 'zapallo.jpg' },
     { id: 5, nombre: "Repollo", precio: 1100, stock: 0, carro: 0, img: 'repollo.webp' },
-    { id: 6, nombre: "Esparragos", precio: 700, stock: 4, carro: 0, img: 'esparragos.jpg' },
+    { id: 6, nombre: "Esparragos", precio: 700, stock: 0, carro: 0, img: 'esparragos.jpg' },
 ];
 
 
@@ -110,7 +128,7 @@ const cards = document.querySelector('.listadovegetales');
 // console.log("Lista de productos");
 for (let listado of productos) {
     // DESESTRUCTURAR
-    const {id, nombre, precio, stock, img} = listado
+    const { id, nombre, precio, stock, img } = listado
 
     if (stock == '1' || stock == '2' || stock == '3') {
         vstock = `<span class="alerta">Stock ${stock} - Quedan Pocas Unidades</span>`;
@@ -136,9 +154,30 @@ let addButton = document.getElementsByClassName("addButton");
 var myFunction = function () {
     var attribute = this.getAttribute("itemID");
     productoSeleccionado = productos.find(obj => obj.id == attribute);
-//EJEMPLO DE OPERADOR TERNARIO CON EL STOCK
-    productoSeleccionado.stock > 0 ? productoSeleccionado.carro++ : alert("no se puede agregar al carrito, no hay mas stock");
-    
+    //mediante sweet alert añadi un mixin con una leyenda e icono al hacer click al boton añadir
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+    })
+
+    Toast.fire({
+        icon: 'success',
+        title: 'Se añadio al carrito'
+    })
+    //EJEMPLO DE OPERADOR TERNARIO CON EL STOCK
+    //mediante sweet alert añadi un mensaje de alerta con una leyenda e icono al hacer click al boton añadir, cuando el stock es cero
+    productoSeleccionado.stock > 0 ? productoSeleccionado.carro++ : Swal.fire({
+        icon: "error",
+        text: 'No se puede agregar al carrito, por el momento, no hay mas stock'
+    });
+
     updateCarrito()
 };
 
@@ -155,7 +194,7 @@ function updateCarrito() {
     const cards = document.querySelector('.carro');
     //si cada producto es distinto de 0 se agregara al carrito. con el boton borrar se podra eliminar.
 
- 
+
     for (let productosTotales of productos) {
         if (productosTotales.stock !== 0) {
             data += `<article>
@@ -166,16 +205,19 @@ function updateCarrito() {
         <p>Precio: ${productosTotales.precio}</p>
         <button class="botonBorrar borrar_elemento" id="${productosTotales.id}">Borrar</button>
     </article>`
-    
-}
 
-productosTotales.stock !== 0 && {}
+        }
 
-cards.innerHTML = data;
+        productosTotales.stock !== 0 && {}
+
+        cards.innerHTML = data;
         i++
         let botones_borrar = document.querySelectorAll(".borrar_elemento");
         for (let boton of botones_borrar) {
             boton.addEventListener("click", borrar_producto);
+
+
+
         }
 
     }
@@ -188,6 +230,29 @@ function borrar_producto(e) {
     productosTotales[e.target.id - 1].carro = 0
     updateCarrito()
 
+//mediante sweet alert añadi un mixin con una leyenda e icono al hacer click al boton borrar
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+    })
+
+    Toast.fire({
+        icon: 'error',
+        title: 'Se elimino del carrito'
+    })
+
+
+
+
+
+
 }
 //cree un boton para mostrar y ocultar el carrito
 let btn_carrito = document.getElementById("mostrar_carrito");
@@ -196,9 +261,11 @@ btn_carrito.addEventListener("click", function () {
 
     if (carrito.style.display != "none") {
         carrito.style.display = "none";
+        
     }
     else {
         carrito.style.display = "block";
+        
     }
 })
 
@@ -219,10 +286,10 @@ function calcularPreciototal() {
 
 
 // evento click al apretar boton izq del mouse. tirando un mensaje de alerta, dentro de una funcion anonima
-let btn_continuar = document.getElementById("btn_continuarCompra");
-btn_continuar.addEventListener("click", function () {
-    alert("este boton , mas adelante, servira para volver a añadir cosas al carrito cuando estemos en un paso previo a finalizar la compra")
-})
+// let btn_continuar = document.getElementById("btn_continuarCompra");
+// btn_continuar.addEventListener("click", function () {
+//     alert("este boton , mas adelante, servira para volver a añadir cosas al carrito cuando estemos en un paso previo a finalizar la compra")
+// })
 
 
 //evento mousedown al presionar. mouseup al levantar el boton y ademas cambia al color amarillo el propio boton
@@ -230,8 +297,25 @@ let btn_finalizar = document.getElementById("btn_finalizarCompra");
 btn_finalizar.addEventListener("mousedown", function presion1() {
     // console.log("pronto con este boton direccionaremos a un espacio donde puedas elegir los medios de pago");
     document.getElementById("btn_finalizarCompra").style.backgroundColor = '#ffff00';
-    
-    const total =  document.getElementById("total")
+
+  
+    Swal.fire({
+        title: 'Finalizar compra',
+        text: "Estas a un paso de obtener tus productos",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Terminar compra!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire(
+            'Facturacion de la compra!',
+            'Procederemos a la facturacion de tu compra.',
+            'success'
+          )
+        }
+      })
 
 
 });
