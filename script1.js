@@ -1,45 +1,35 @@
 // mediante una api de geolocalizacion, al entrar a la pagina, indicara la localizacion del usuario
 let contenedor = document.getElementById("resultado");
 
-
 //capturamos la API desde JS . en este caso se trata de una API que segun el IP indicara la localizacion del usuario. al entrar al sitio.
 fetch("https://ipgeolocation.abstractapi.com/v1/?api_key=a89c7f53daa847a7a66f91d9a45730a7")
 
+    //capturo la respuesta de la promesa. retorno la rta a json
+    .then(response => response.json())
+    //con un segundo then consumo la rta en json
 
-//capturo la respuesta de la promesa. retorno la rta a json
-.then(response => response.json())
-//con un segundo then consumo la rta en json
-
-.then(data => {
-  resultado.innerHTML = `<div> Estas en la Ciudad de : ${data.city}.  
+    .then(data => {
+        contenedor.innerHTML = `<div> Estas en la Ciudad de : ${data.city}.  
 Provincia de : ${data.region}.
- Pais : ${data.country}.</span>
- Codigo postal : ${data.postal_code
-}. <img src="./assets/periscope.png" alt="iconmap" height="19px"></div>
+ Pais : ${data.country}.
+            . <img src="./assets/periscope.png" alt="iconmap" height="19px"></div>
 `
-// .then(consola => console.log(consola))
-})
-
-// const element = document.getElementById("ocultar");
-// element.addEventListener("click", ocultarDiv());
-
-// function ocultarDiv(){
-//   var elms = document.getElementsByClassName("localizacion");
-//    Array.from(elms).forEach((x) => {
-//     if (x.style.display === "none") {
-//         x.style.display = "block";        
-//     } else {
-//         x.style.display = "none";
-// }})}
+        // .then(consola => console.log(consola))
+    })
 
 
+const btnOcultarLocalizacion = document.getElementById("btnOcultarLocalizacion");
+btnOcultarLocalizacion.addEventListener("click", ocultarDivLocalizacion);
+function ocultarDivLocalizacion() {
+    var divLocalizacion = document.querySelector(".localizacion");
+    divLocalizacion.style.display = "none";
+}
 
 //EDITANDO DOM DESDE EL NAVEGADOR
 //HEADER
 
 //Accediendo al nodo a traves de get element by ID
 let titulo = document.getElementById("titulo");
-// console.log(titulo);
 //defini un atributo de clase en el h1. que tiene un background color para poner el fondo celeste
 titulo.className = "fondoceleste";
 
@@ -73,10 +63,6 @@ nombre.addEventListener("keypress", function (e) {
     e.keyCode === 13 && saludando()
 })
 
-
-
-
-
 // Crear array de usuarios
 let usuarios = [];
 //capturo un dato al storage local. accedo a los datos a traves de getitem
@@ -106,7 +92,7 @@ function saludando() {
         location.reload();
     }
     else {
-        
+
         //al apretar enter o aceptar se dispara un mensaje de alerta pidiendo ingresar un nombre para operar
         const Toast = Swal.mixin({
             toast: true,
@@ -119,17 +105,15 @@ function saludando() {
                 toast.addEventListener('mouseleave', Swal.resumeTimer)
             }
         })
-    
+
         Toast.fire({
             icon: 'info',
             title: 'Para poder operar, tenes que ingresar un nombre'
         })
-    
+
         // console.log("tenes que ingresar un valor")
     }
 }
-
-
 
 //cree un array de objetos. la clase Producto tiene las variables que voy a utilizar. nombre es reconocido como string y precio y stock son reconocidos como numeros. 
 
@@ -149,10 +133,6 @@ const productosTotales = [
     { id: 5, nombre: "Repollo", precio: 1100, stock: 0, carro: 0, img: 'repollo.webp' },
     { id: 6, nombre: "Esparragos", precio: 700, stock: 0, carro: 0, img: 'esparragos.jpg' },
 ];
-
-
-
-
 
 const productos = productosTotales.filter((producto) => producto.stock >= 0);
 
@@ -209,19 +189,20 @@ var myFunction = function () {
     })
     //EJEMPLO DE OPERADOR TERNARIO CON EL STOCK
     //mediante sweet alert añadi un mensaje de alerta con una leyenda e icono al hacer click al boton añadir, cuando el stock es cero
-    productoSeleccionado.stock > 0 ? productoSeleccionado.carro++ : Swal.fire({
-        icon: "error",
-        text: 'No se puede agregar al carrito, por el momento, no hay mas stock'
-    });
-
-    updateCarrito()
+    if ((productoSeleccionado.stock > 0) && (productoSeleccionado.stock > productoSeleccionado.carro)) {
+        productoSeleccionado.carro++
+    } else {
+        Swal.fire({
+            icon: "error",
+            text: 'No se puede agregar al carrito, por el momento, no hay más stock'
+        });
+    }
+    updateCarrito();
 };
 
 for (var j = 0; j < addButton.length; j++) {
     addButton[j].addEventListener('click', myFunction, false);
 }
-
-
 
 function updateCarrito() {
     let i = 1;
@@ -241,21 +222,14 @@ function updateCarrito() {
         <p>Precio: ${productosTotales.precio}</p>
         <button class="botonBorrar borrar_elemento" id="${productosTotales.id}">Borrar</button>
     </article>`
-
         }
-
-        productosTotales.stock !== 0 && {}
 
         cards.innerHTML = data;
         i++
         let botones_borrar = document.querySelectorAll(".borrar_elemento");
         for (let boton of botones_borrar) {
             boton.addEventListener("click", borrar_producto);
-
-
-
         }
-
     }
     calcularPreciototal()
 }
@@ -266,7 +240,7 @@ function borrar_producto(e) {
     productosTotales[e.target.id - 1].carro = 0
     updateCarrito()
 
-//mediante sweet alert añadi un mixin con una leyenda e icono al hacer click al boton borrar
+    //mediante sweet alert añadi un mixin con una leyenda e icono al hacer click al boton borrar
     const Toast = Swal.mixin({
         toast: true,
         position: 'top-end',
@@ -283,12 +257,6 @@ function borrar_producto(e) {
         icon: 'error',
         title: 'Se elimino del carrito'
     })
-
-
-
-
-
-
 }
 //cree un boton para mostrar y ocultar el carrito
 let btn_carrito = document.getElementById("mostrar_carrito");
@@ -297,15 +265,11 @@ btn_carrito.addEventListener("click", function () {
 
     if (carrito.style.display != "none") {
         carrito.style.display = "none";
-        
     }
     else {
         carrito.style.display = "block";
-        
     }
 })
-
-
 
 // sumo el total de productos añadidos al carrito
 function calcularPreciototal() {
@@ -319,61 +283,39 @@ function calcularPreciototal() {
     operaciones();
 }
 
-//MEDIOS DE PAGO. EFECTIVO O TARJETA. 
-let forma_de_pago =document.getElementsByName("eot");
-//forma = forma de pago
-for(forma of forma_de_pago){
-    forma.addEventListener("click", function(f){
-        let tipo_pago = document.getElementsByName("value")
-        if (tipo_pago==="efectivo"){
-            console.log("tu pago es este");
-        }else{
-            console.log("vas a pagar en cuotas raton")
-        }
-        console.log(f.target.value);
-    })
-}
-console.log(forma_de_pago);
-
-
 // evento click al apretar boton izq del mouse. tirando un mensaje de alerta, dentro de una funcion anonima
 // let btn_continuar = document.getElementById("btn_continuarCompra");
 // btn_continuar.addEventListener("click", function () {
 //     alert("este boton , mas adelante, servira para volver a añadir cosas al carrito cuando estemos en un paso previo a finalizar la compra")
 // })
 
-
 //evento mousedown al presionar. mouseup al levantar el boton y ademas cambia al color amarillo el propio boton
-let btn_finalizar = document.getElementById("btn_finalizarCompra");
-btn_finalizar.addEventListener("mousedown", function presion1() {
-    // console.log("pronto con este boton direccionaremos a un espacio donde puedas elegir los medios de pago");
-    document.getElementById("btn_finalizarCompra").style.backgroundColor = '#ffff00';
+// let btn_finalizar = document.getElementById("btn_finalizarCompra");
+// btn_finalizar.addEventListener("mousedown", function presion1() {
+//     // console.log("pronto con este boton direccionaremos a un espacio donde puedas elegir los medios de pago");
+//     document.getElementById("btn_finalizarCompra").style.backgroundColor = '#ffff00';
 
-  
-    Swal.fire({
-        title: 'Finalizar compra',
-        text: "Estas a un paso de obtener tus productos",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Terminar compra!'
-      }).then((result) => {
-        if (result.isConfirmed) {
-          Swal.fire(
-            'Facturacion de la compra!',
-            'Procederemos a la facturacion de tu compra.',
-            'success'
-          )
-        }
-      })
-
-
-});
+//     //MEDIOS DE PAGO. EFECTIVO O TARJETA. 
+//     let forma_de_pago = document.getElementsByName("eot");
+//     //forma = forma de pago
+//     for (forma of forma_de_pago) {
+//         forma.addEventListener("click", function (f) {
+//             let tipo_pago = document.getElementsByName("value")
+//             if (tipo_pago === "efectivo") {
+//                 console.log("tu pago es este");
+//             } else {
+//                 console.log("vas a pagar en cuotas raton")
+//             }
+//             console.log(f.target.value);
+//         })
+//     }
+//     console.log(forma_de_pago);
+// });
 //evento mouseup. al levantar la presion del btn izquierdo cambia a color rojo.
-btn_finalizar.addEventListener("mouseup", function presion2() {
-    document.getElementById("btn_finalizarCompra").style.backgroundColor = '#ff0000';
-})
+// btn_finalizar.addEventListener("mouseup", function presion2() {
+//     document.getElementById("btn_finalizarCompra").style.backgroundColor = '#ff0000';
+// })
+
 
 
 let form = document.getElementById("form");
@@ -381,11 +323,63 @@ form.addEventListener("submit", function (e) {
     e.preventDefault();
     let coment = document.getElementById("comentario");
     // console.log(" El comentario es :", comentario.value);
+})
 
+let subTotalValue = document.getElementById('costoTotal');
+
+let btnIrAPagar = document.getElementById("btnIrAPagar");
+let divMediosDePago = document.querySelector(".mediosdepago");
+
+btnIrAPagar.addEventListener("click", () => {
+    if (subTotalValue.value > 0) {
+        divMediosDePago.classList.remove("hidden");
+    }
+})
+
+// Medios de Pago
+let radiosEot = document.querySelectorAll('input[name="eot"]');
+
+let divPagoEnCuotas = document.querySelector('.pagoencuotas');
+
+let divTotalCompra = document.querySelector('.totalCompra');
+
+let inputTotalCompra = document.getElementById('inputTotalCompra');
+
+radiosEot.forEach((radio) => {
+    radio.addEventListener('click', function () {
+        if (radio.value == 'efectivo') {
+            divTotalCompra.classList.remove('hidden')
+            divPagoEnCuotas.classList.add('hidden')
+            inputTotalCompra.value = parseInt(subTotalValue.value) * 0.9;
+        } else if (radio.value == 'cuotas') {
+            divTotalCompra.classList.add('hidden')
+            divPagoEnCuotas.classList.remove('hidden')
+        }
+    }
+    )
+})
+
+// Pagos en cuotas
+let radiosCuotas = document.querySelectorAll('input[name="pagoencuotas"]');
+radiosCuotas.forEach((radio) => {
+    radio.addEventListener('click', function () {
+        if (radio.value == '3') {
+            divTotalCompra.classList.remove('hidden')
+            inputTotalCompra.value = Math.round(parseInt(subTotalValue.value) * 1.15);
+        } else if (radio.value == '6') {
+            divTotalCompra.classList.remove('hidden')
+            inputTotalCompra.value = Math.round(parseInt(subTotalValue.value) * 1.2);
+        } else if (radio.value == '9') {
+            divTotalCompra.classList.remove('hidden')
+            inputTotalCompra.value = Math.round(parseInt(subTotalValue.value) * 1.25);
+        } else if (radio.value == '12') {
+            divTotalCompra.classList.remove('hidden')
+            inputTotalCompra.value = Math.round(parseInt(subTotalValue.value) * 1.3);
+        }
+    })
 })
 
 //FOOTER
-
 
 //use createElement para insertar un h4 y le agregue una clase, que determinaba un color al h4
 let redessociales = document.createElement("h3");
