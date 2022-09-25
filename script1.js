@@ -1,3 +1,38 @@
+let contenedor = document.getElementById("resultado");
+
+
+//capturamos la API desde JS . en este caso se trata de una API que segun el IP indicara la localizacion del usuario. al entrar al sitio.
+fetch("https://ipgeolocation.abstractapi.com/v1/?api_key=a89c7f53daa847a7a66f91d9a45730a7")
+
+
+//capturo la respuesta de la promesa. retorno la rta a json
+.then(response => response.json())
+//con un segundo then consumo la rta en json
+
+.then(data => {
+  resultado.innerHTML = `<div> Estas en la Ciudad de : ${data.city}.  
+Provincia de : ${data.region}.
+ Pais : ${data.country}.</span>
+ Codigo postal : ${data.postal_code
+}. <img src="./assets/periscope.png" alt="iconmap" height="19px"></div>
+`
+// .then(consola => console.log(consola))
+})
+
+// const element = document.getElementById("ocultar");
+// element.addEventListener("click", ocultarDiv());
+
+// function ocultarDiv(){
+//   var elms = document.getElementsByClassName("localizacion");
+//    Array.from(elms).forEach((x) => {
+//     if (x.style.display === "none") {
+//         x.style.display = "block";        
+//     } else {
+//         x.style.display = "none";
+// }})}
+
+
+
 //EDITANDO DOM DESDE EL NAVEGADOR
 //HEADER
 
