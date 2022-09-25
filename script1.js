@@ -1,3 +1,4 @@
+// mediante una api de geolocalizacion, al entrar a la pagina, indicara la localizacion del usuario
 let contenedor = document.getElementById("resultado");
 
 
@@ -318,6 +319,21 @@ function calcularPreciototal() {
     operaciones();
 }
 
+//MEDIOS DE PAGO. EFECTIVO O TARJETA. 
+let forma_de_pago =document.getElementsByName("eot");
+//forma = forma de pago
+for(forma of forma_de_pago){
+    forma.addEventListener("click", function(f){
+        let tipo_pago = document.getElementsByName("value")
+        if (tipo_pago==="efectivo"){
+            console.log("tu pago es este");
+        }else{
+            console.log("vas a pagar en cuotas raton")
+        }
+        console.log(f.target.value);
+    })
+}
+console.log(forma_de_pago);
 
 
 // evento click al apretar boton izq del mouse. tirando un mensaje de alerta, dentro de una funcion anonima

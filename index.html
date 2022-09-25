@@ -29,11 +29,12 @@
             <div id="resultado">
             </div>
             <form id="formulario">
-                <button type="button" value="Ocultar localizacion" class="button" id="ocultar">Ocultar localizacion</button>
-                
+                <button type="button" value="Ocultar localizacion" class="button" id="ocultar">Ocultar
+                    localizacion</button>
+
             </form>
         </div>
-        
+
         <h1 id="titulo">VENTA DE PRODUCTOS CONGELADOS</h1>
         <h2 id="subtitulo">VEGETALES</h2>
         <div id="h3coninnerHtml"></div>
@@ -53,9 +54,12 @@
     </header>
     <main>
 
-        <button id="mostrar_carrito">Ver Carrito</button>
-        <aside class="aside">
 
+        <aside class="aside">
+            <div class="listadovegetales">
+
+            </div>
+            <img src="./assets/carrito-de-compras.png" alt="carrito" id="mostrar_carrito">
             <div class="separador" id="carrito">
                 <h2>Carrito</h2>
                 <div class="columnas">
@@ -70,17 +74,37 @@
                 <div class="carro">
                 </div>
                 <div class="cuenta">
-                    <label>EL TOTAL ES:</label>
-                    <input type="text" id="costoTotal">
+
+                    <div class="mediosdepago">
+                        <h3>MEDIOS DE PAGO</p>
+                            <!-- MEDIOS DE PAGO. EFECTIVO O TARJETA = eot -->
+                            <input type="radio" name="eot" value="efectivo">
+                            <label for="">Efectivo o un pago. Incluye un 10% de descuento</label>
+                            <br>
+                            <input type="radio" name="eot" value="cuotas">
+                            <label for="">Cuotas 3 - 6 - 9 - 12. CON INTERESES</label>
+                            <br>
+                            <br>
+                            <input type="radio" name="pagoencuotas" value="3cuotas">
+                            <label for=""> 3 cuotas. 15% de interes.</label>
+                            <br>
+                            <input type="radio" name="pagoencuotas" value="6cuotas">
+                            <label for=""> 6 cuotas. 20% de interes.</label>
+                            <br>
+                            <input type="radio" name="pagoencuotas" value="9cuotas">
+                            <label for=""> 9 cuotas. 25% de interes.</label>
+                            <br>
+                            <input type="radio" name="pagoencuotas" value="12cuotas">
+                            <label for=""> 12 cuotas. 30% de interes.</label>
+                            <label>EL SUBTOTAL ES:</label>
+                            <input type="text" id="costoTotal">
+                    </div>
                     <!-- <button id="btn_continuarCompra" type="submit">Quiero seguir comprando</button> -->
                     <button id="btn_finalizarCompra" type="submit">FINALIZAR COMPRA</button>
                     <label id="total" for=""></label>
                 </div>
             </div>
 
-            <div class="listadovegetales">
-
-            </div>
         </aside>
 
     </main>
@@ -94,15 +118,7 @@
             <br>
         </form>
         <div class="mediosyredes">
-            <div class="mediosdepago">
-                <h3>MEDIOS DE PAGO</p>
-                    <h4>Efectivo o un pago. Incluye un 10% de descuento</h4>
-                    <h4>Cuotas 3 - 6 - 9 - 12. CON INTERESES</h4>
-                    <p> 3 cuotas. 15% de interes.</p>
-                    <p> 6 cuotas. 20% de interes.</p>
-                    <p> 9 cuotas. 25% de interes.</p>
-                    <p> 12 cuotas. 30% de interes.</p>
-            </div>
+
             <div>
                 <div id="redesfooter">
 

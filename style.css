@@ -84,6 +84,11 @@ header {
     
 
 }
+
+#mostrar_carrito{
+    height: 31px;
+}
+
 .carro {
     max-width: 100%;
     margin: 0 auto;
