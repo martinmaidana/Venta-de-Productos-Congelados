@@ -30,15 +30,15 @@ function ocultarDivLocalizacion() {
 //defini un atributo de clase en el h1. que tiene un background color para poner el fondo celeste
 // titulo.className = "fondoceleste";
 
-let subtitulo = document.getElementById("subtitulo");
-// console.log(subtitulo);
-//mouseover/mouseout en el subtitulo vegetales. cambiando el color rojo al pasar el maouse y retorna a negro al sacar el maouse
-subtitulo.addEventListener("mouseover", function () {
-    this.style.color = '#ff0000';
-});
-subtitulo.addEventListener("mouseout", function () {
-    this.style.color = '#000000';
-});
+// let subtitulo = document.getElementById("subtitulo");
+// // console.log(subtitulo);
+// //mouseover/mouseout en el subtitulo vegetales. cambiando el color rojo al pasar el maouse y retorna a negro al sacar el maouse
+// subtitulo.addEventListener("mouseover", function () {
+//     this.style.color = '#ff0000';
+// // });
+// subtitulo.addEventListener("mouseout", function () {
+//     this.style.color = '#000000';
+// });
 
 //MAIN
 
