@@ -26,9 +26,9 @@ function ocultarDivLocalizacion() {
 //HEADER
 
 //Accediendo al nodo a traves de get element by ID
-let titulo = document.getElementById("titulo");
+// let titulo = document.getElementById("titulo");
 //defini un atributo de clase en el h1. que tiene un background color para poner el fondo celeste
-titulo.className = "fondoceleste";
+// titulo.className = "fondoceleste";
 
 let subtitulo = document.getElementById("subtitulo");
 // console.log(subtitulo);

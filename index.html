@@ -21,6 +21,8 @@
 
         .fondoceleste {
             background-color: #fe6f2f;
+            color: #319190;
+
         }
     </style>
 
@@ -39,7 +41,7 @@
             </div>
             <div class="div2">
                 <div>
-                    <h1 id="titulo">venta de productos congelados</h1>
+                    <!-- <h1 id="titulo" >venta de congelados</h1> -->
                 </div>
                 <div class="subtitulos">
                     <h2 id="subtitulo">vegetales</h2>
@@ -47,23 +49,24 @@
                     <h2 id="subtitulo">carnes</h2>
                 </div>
             </div>
-<div class="div3">
-    <div class="botones">
-                
-                <input type="text" placeholder="Ingrese su nombre" id="nombre_usuario">
-                <button onclick="saludando()" type="submit" class="btnAceptar"><img src="./assets/programador.png" height="22px" alt="ingresar">ACEPTAR</button>
-                <br>
-                <label for=""></label>
+            <div class="div3">
+                <div class="botones">
 
-                <div id="ingresar_al_sistema">
+                    <input type="text" placeholder="Ingrese su nombre" id="nombre_usuario">
+                    <button onclick="saludando()" type="submit" class="btnAceptar"><img src="./assets/programador.png"
+                            height="22px" alt="ingresar">INGRESAR</button>
+                    <br>
+                    <label for=""></label>
+
+                    <div id="ingresar_al_sistema">
+
+                    </div>
+
 
                 </div>
-                
-
+                <img src="./assets/carrito-de-compras.png" alt="carrito" id="mostrar_carrito">
             </div>
-            <img src="./assets/carrito-de-compras.png" alt="carrito" id="mostrar_carrito">
-</div>
-            
+
         </div>
 
     </header>
@@ -130,17 +133,20 @@
 
     </main>
     <footer>
-        <div class="titulos">
-            <form action="" id="form">
-                <label for="">Dudas o sugerencias</label>
-                <br>
-                <textarea name="" id="comentario" cols="30" rows="10" placeholder="Inserte su comentario"></textarea>
-                <br>
-                <button>Enviar</button>
-                <br>
-            </form>
-            <div class="mediosyredes">
+        <div class="footer">
+            <div>
+                <form action="" id="form">
+                    <label for="">Dudas o sugerencias</label>
+                    <br>
+                    <textarea name="" id="comentario" cols="30" rows="10"
+                        placeholder="Inserte su comentario"></textarea>
+                    <br>
+                    <button>Enviar</button>
+                    <br>
+                </form>
+            </div>
 
+            <div class="mediosyredes">
                 <div>
                     <div id="redesfooter">
 
@@ -153,9 +159,11 @@
                             <li>Facebook:Proximamente.</li>
                         </ul>
                     </div>
+                    <h6 class="copyr">© 2022. Todos los Derechos reservados.</h6>
                 </div>
+                
             </div>
-            <h6 class="copyr">© 2022. Todos los Derechos reservados.</h6>
+
         </div>
 
     </footer>

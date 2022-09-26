@@ -1,17 +1,17 @@
 //HEADER
 
-let titulo = document.getElementById("titulo");
-console.log(titulo);
+// let titulo = document.getElementById("titulo");
+// console.log(titulo);
 
-titulo.className = "fondoceleste";
+// titulo.className = "fondoceleste";
 
 let subtitulo = document.getElementById("subtitulo");
 console.log(subtitulo);
-console.log(titulo.innerText);
-titulo.innerText = "VENTA DE PRODUCTOS CONGELADOS - generado desde JS ";
+// console.log(titulo.innerText);
+// titulo.innerText = "VENTA DE PRODUCTOS CONGELADOS - generado desde JS ";
 
-let subth3 = document.getElementById("h3coninnerHtml");
-subth3.innerHTML = "<h3 class='colorazul'>Vegetales verdes</h3>";
+// let subth3 = document.getElementById("h3coninnerHtml");
+// subth3.innerHTML = "<h3 class='colorazul'>Vegetales verdes</h3>";
 
 //MAIN
 function saludando(){
@@ -19,7 +19,6 @@ function saludando(){
     let saludar = document.getElementById("nombre_usuario");
     console.log("<--------Bienvenidos a venta de productos congelados------->", saludar.value);
     }
-
 
 let clases = document.getElementsByClassName("card");
 console.log(clases);

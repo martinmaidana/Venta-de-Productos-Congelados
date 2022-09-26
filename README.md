@@ -55,5 +55,12 @@ ya en el carrito. genere un mensaje de mixin alert al hacer click en el boton bo
 y al hacer click en finalizar compra. aparecera un mensaje de terminar o cancelar compra que mas adelante debera conectar con el tipo de pago que quiero realizar.
 
 
+//añadi una API de geolocalizacion. en la parte superior de la pagina.
+cambie el estilo y ademas modifique las funciones para completar parte del carrito. 
+me queda pendiente agregar algo al boton finalizar compra. como ingresar una tarjeta o algo similar. 
+me gustaria agregar una funcion para que el usurio se registre con usuario y contraseña como vi que hicieron algunos. me queda tiempo hasta la entrega final.
+
+
+
 
 
