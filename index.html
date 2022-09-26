@@ -20,7 +20,7 @@
         }
 
         .fondoceleste {
-            background-color: aquamarine;
+            background-color: #fe6f2f;
         }
     </style>
 
@@ -31,27 +31,40 @@
         <div class="localizacion">
             <div id="resultado">
             </div>
-            <button type="button" value="Ocultar localizacion" class="button" id="btnOcultarLocalizacion">Ocultar
-                localizacion</button>
+            <button type="button" value="Ocultar localizacion" class="button" id="btnOcultarLocalizacion">X</button>
         </div>
-        <div class="titulos">
-            <h1 id="titulo">VENTA DE PRODUCTOS CONGELADOS</h1>
-            <h2 id="subtitulo">VEGETALES</h2>
-            <div id="h3coninnerHtml"></div>
-
-            <div class="botones">
-                <label for="">Desea agregar productos(Ingrese su nombre)</label>
+        <div class="titulos parent">
+            <div class="div1">
+                <img src="./assets/Sin título.png" alt="logo">
+            </div>
+            <div class="div2">
+                <div>
+                    <h1 id="titulo">venta de productos congelados</h1>
+                </div>
+                <div class="subtitulos">
+                    <h2 id="subtitulo">vegetales</h2>
+                    <h2 id="subtitulo">frutas</h2>
+                    <h2 id="subtitulo">carnes</h2>
+                </div>
+            </div>
+<div class="div3">
+    <div class="botones">
+                
                 <input type="text" placeholder="Ingrese su nombre" id="nombre_usuario">
-                <button onclick="saludando()" type="submit">Aceptar</button>
+                <button onclick="saludando()" type="submit" class="btnAceptar"><img src="./assets/programador.png" height="22px" alt="ingresar">ACEPTAR</button>
                 <br>
                 <label for=""></label>
 
                 <div id="ingresar_al_sistema">
 
                 </div>
-            </div>
-        </div>
+                
 
+            </div>
+            <img src="./assets/carrito-de-compras.png" alt="carrito" id="mostrar_carrito">
+</div>
+            
+        </div>
 
     </header>
     <main>
@@ -61,7 +74,7 @@
             <div class="listadovegetales">
 
             </div>
-            <img src="./assets/carrito-de-compras.png" alt="carrito" id="mostrar_carrito">
+
             <div class="separador" id="carrito">
                 <h2>Carrito</h2>
                 <div class="columnas">

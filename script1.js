@@ -9,11 +9,8 @@ fetch("https://ipgeolocation.abstractapi.com/v1/?api_key=a89c7f53daa847a7a66f91d
     //con un segundo then consumo la rta en json
 
     .then(data => {
-        contenedor.innerHTML = `<div> Estas en la Ciudad de : ${data.city}.  
-Provincia de : ${data.region}.
- Pais : ${data.country}.
-            . <img src="./assets/periscope.png" alt="iconmap" height="19px"></div>
-`
+        contenedor.innerHTML = `<div><img src="./assets/periscope.png" alt="iconmap" height="19px"> Estas en la Ciudad de : ${data.city}.  
+Provincia de : ${data.region}. Pais : ${data.country}. </div>`
         // .then(consola => console.log(consola))
     })
 
@@ -32,15 +29,6 @@ function ocultarDivLocalizacion() {
 let titulo = document.getElementById("titulo");
 //defini un atributo de clase en el h1. que tiene un background color para poner el fondo celeste
 titulo.className = "fondoceleste";
-
-
-//innerText de un nodo nos permite modificar su nodo de texto "pisando el html" En este caso cambie el texto del H1.
-// console.log(titulo.innerText);
-titulo.innerText = "VENTA DE PRODUCTOS CONGELADOS";
-
-//innerHTML permite definir el código html interno a traves de JS. En este caso agregue UN H3 debajo del h1 y h2.
-let subth3 = document.getElementById("h3coninnerHtml");
-subth3.innerHTML = "<h3 class='colorazul'>Listado de vegetales</h3>";
 
 let subtitulo = document.getElementById("subtitulo");
 // console.log(subtitulo);
@@ -159,7 +147,7 @@ for (let listado of productos) {
     <p>${vstock}</p>
     <label for="number">${nombre}</label>
     <br>
-    <button class="addButton" type="submit" itemID="${id}"">Añadir</button>
+    <button class="addButton" type="submit" itemID="${id}""><img src="./assets/agregar-carrito.png" alt="iconmap" height="14px">AGREGAR</button>
 </div>`
     cards.innerHTML = data;
     i++
