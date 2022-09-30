@@ -141,13 +141,14 @@ for (let listado of productos) {
     } else {
         vstock = 'Stock ' + stock;
     }
-    data += `<div class="card">
+    data += `<div class="card 
+    ">
     <img class="imagen" src="./assets/${img}" alt="${nombre}">
     <p>$ ${precio}</p>
     <p>${vstock}</p>
     <label for="number">${nombre}</label>
     <br>
-    <button class="addButton" type="submit" itemID="${id}""><img src="./assets/agregar-carrito.png" alt="iconmap" height="14px">AGREGAR</button>
+    <button class="addButton btn btn-outline-primary" type="submit" itemID="${id}""><img src="./assets/agregar-carrito.png" alt="iconmap" height="14px">AGREGAR</button>
 </div>`
     cards.innerHTML = data;
     i++
@@ -208,7 +209,7 @@ function updateCarrito() {
         </div>
         <p>Cantidad: ${productosTotales.carro}</p>
         <p>Precio: ${productosTotales.precio}</p>
-        <button class="botonBorrar borrar_elemento" id="${productosTotales.id}">Borrar</button>
+        <button class="btn btn-outline-danger borrar_elemento" id="${productosTotales.id}">Borrar</button>
     </article>`
         }
 
@@ -370,10 +371,10 @@ radiosCuotas.forEach((radio) => {
 //FOOTER
 
 //use createElement para insertar un h4 y le agregue una clase, que determinaba un color al h4
-let redessociales = document.createElement("h3");
-redessociales.innerText = "Seguinos en redes sociales";
-redessociales.className = "colorazul";
-redesfooter.append(redessociales);
+// let redessociales = document.createElement("h3");
+// redessociales.innerText = "Seguinos en redes sociales";
+// redessociales.className = "colorazul";
+// redesfooter.append(redessociales);
 /*El método getElementsByTagName() sirve para acceder a un conjunto de elementos de la estructura HTML, utilizando su nombre de etiqueta como identificación. Utilice la etiqueta li  */
 let li = document.getElementsByTagName("li");
 // console.log(li);

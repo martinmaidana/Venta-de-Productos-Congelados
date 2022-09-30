@@ -14,6 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 
     <link rel="stylesheet" href="./style.css">
     <style>
@@ -66,9 +67,11 @@
                         <div id="ingresar_al_sistema">
                         </div>
                         <div>
-                            <img src="./assets/carrito-de-compras.png" alt="carrito" id="mostrar_carrito">
+
+
 
                         </div>
+
 
                     </div>
 
@@ -76,9 +79,64 @@
 
                 </div>
             </div>
+            <button class="btn btn-outline-success" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><img
+                    src="./assets/carrito-de-compras.png" alt="carrito" id="mostrar_carrito"></button>
         </nav>
 
 
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasRightLabel">Carrito de compras</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <div class="separador" id="carrito">
+
+                    <div class="visual">
+
+                    </div>
+                    <div class="carro">
+                    </div>
+                    <div class="cuenta">
+                        <label>EL SUBTOTAL ES:</label>
+                        <input type="text" id="costoTotal">
+                        <button id="btnIrAPagar" type="submit">Ir a Pagar</button>
+                        <label id="total" for=""></label>
+                        <div class="mediosdepago hidden">
+                            <h3>MEDIOS DE PAGO</h3>
+                            <!-- MEDIOS DE PAGO. EFECTIVO O TARJETA = eot -->
+                            <input type="radio" name="eot" value="efectivo" id="btnEfectivo">
+                            <label for="">Debito(Incluye un 10% de descuento)</label>
+                            <br>
+                            <input type="radio" name="eot" value="cuotas">
+                            <label for="">Cuotas</label>
+                            <br>
+                            <br>
+                            <div class="pagoencuotas hidden">
+                                <input type="radio" name="pagoencuotas" value="3">
+                                <label for=""> 3 cuotas. 15% de interes.</label>
+                                <br>
+                                <input type="radio" name="pagoencuotas" value="6">
+                                <label for=""> 6 cuotas. 20% de interes.</label>
+                                <br>
+                                <input type="radio" name="pagoencuotas" value="9">
+                                <label for=""> 9 cuotas. 25% de interes.</label>
+                                <br>
+                                <input type="radio" name="pagoencuotas" value="12">
+                                <label for=""> 12 cuotas. 30% de interes.</label>
+                            </div>
+                        </div>
+                        <!-- <button id="btn_continuarCompra" type="submit">Quiero seguir comprando</button> -->
+                        <div class="totalCompra hidden">
+                            <label for=""></label>
+                            <input type="text" id="inputTotalCompra"></input>
+                            <button id="btnFinalizarCompra" class="">Finalizar Compra</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <!-- <div class="titulos parent">
             <div class="div1">
@@ -112,7 +170,7 @@
                 <img src="./assets/carrito-de-compras.png" alt="carrito" id="mostrar_carrito">
             </div>
 
-        </div> --> -->
+        </div> -->
 
     </header>
     <main>
@@ -123,7 +181,7 @@
 
             </div>
 
-            <div class="separador" id="carrito">
+            <!-- <div class="separador" id="carrito">
                 <h2>Carrito</h2>
                 <div class="columnas">
                     <h3>Producto</h3>
@@ -144,7 +202,7 @@
                     <div class="mediosdepago hidden">
                         <h3>MEDIOS DE PAGO</h3>
                         <!-- MEDIOS DE PAGO. EFECTIVO O TARJETA = eot -->
-                        <input type="radio" name="eot" value="efectivo" id="btnEfectivo">
+            <!-- <input type="radio" name="eot" value="efectivo" id="btnEfectivo">
                         <label for="">Debito(Incluye un 10% de descuento)</label>
                         <br>
                         <input type="radio" name="eot" value="cuotas">
@@ -164,22 +222,32 @@
                             <input type="radio" name="pagoencuotas" value="12">
                             <label for=""> 12 cuotas. 30% de interes.</label>
                         </div>
-                    </div>
-                    <!-- <button id="btn_continuarCompra" type="submit">Quiero seguir comprando</button> -->
-                    <div class="totalCompra hidden">
+                    </div> -->
+            <!-- <button id="btn_continuarCompra" type="submit">Quiero seguir comprando</button> -->
+            <!-- <div class="totalCompra hidden">
                         <label for=""></label>
                         <input type="text" id="inputTotalCompra"></input>
                         <button id="btnFinalizarCompra" class="">Finalizar Compra</button>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
         </aside>
 
     </main>
     <footer>
-        <div class="footer bg-light">
-            <div>
+        <div class="footer bg-light d-block">
+            <div class="d-flex justify-content-evenly">
+                        <i class="bi bi-whatsapp"></i>
+                        <i class="bi bi-twitter"></i>
+                        <i class="bi bi-facebook"></i>
+
+                    </div>
+                    <div class="copyr d-flex justify-content-center">
+                        <h6 >© 2022. Todos los Derechos reservados.</h6>
+                    </div>
+                    
+            <!-- <div>
                 <form action="" id="form">
                     <label for="">Dudas o sugerencias</label>
                     <br>
@@ -189,25 +257,7 @@
                     <button>Enviar</button>
                     <br>
                 </form>
-            </div>
-
-            <div class="mediosyredes">
-                <div>
-                    <div id="redesfooter">
-
-                    </div>
-                    <div>
-                        <ul>
-                            <li>Instagram:@productos_congelados</li>
-                            <li>Whatsap:+54 555-5555</li>
-                            <li>Twitter:Proximante</li>
-                            <li>Facebook:Proximamente.</li>
-                        </ul>
-                    </div>
-                    <h6 class="copyr">© 2022. Todos los Derechos reservados.</h6>
-                </div>
-
-            </div>
+            </div> -->
 
         </div>
         <div class="localizacion">
