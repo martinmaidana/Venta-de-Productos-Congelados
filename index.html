@@ -14,7 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="./style.css">
-    <style>
+    <!-- <style>
         .colorazul {
             color: rgb(60, 60, 135);
         }
@@ -24,17 +24,13 @@
             color: #319190;
 
         }
-    </style>
+    </style> -->
 
 </head>
 
 <body>
     <header>
-        <div class="localizacion">
-            <div id="resultado">
-            </div>
-            <button type="button" value="Ocultar localizacion" class="button" id="btnOcultarLocalizacion">X</button>
-        </div>
+
         <div class="titulos parent">
             <div class="div1">
                 <img src="./assets/Sin título.png" alt="logo">
@@ -45,8 +41,6 @@
                 </div>
                 <div class="subtitulos">
                     <h2 id="subtitulo">vegetales</h2>
-                    <h2 id="subtitulo">frutas</h2>
-                    <h2 id="subtitulo">carnes</h2>
                 </div>
             </div>
             <div class="div3">
@@ -55,6 +49,7 @@
                     <input type="text" placeholder="Ingrese su nombre" id="nombre_usuario">
                     <button onclick="saludando()" type="submit" class="btnAceptar"><img src="./assets/programador.png"
                             height="22px" alt="ingresar">INGRESAR</button>
+                    <button type="submit" onclick="localStorage.clear(), location.reload()" class="btnAceptar">REINICIAR STOCK</button>
                     <br>
                     <label for=""></label>
 
@@ -133,7 +128,7 @@
 
     </main>
     <footer>
-        <div class="footer">
+        <!-- <div class="footer">
             <div>
                 <form action="" id="form">
                     <label for="">Dudas o sugerencias</label>
@@ -151,24 +146,20 @@
                     <div id="redesfooter">
 
                     </div>
-                    <div>
-                        <ul>
-                            <li>Instagram:@productos_congelados</li>
-                            <li>Whatsap:+54 555-5555</li>
-                            <li>Twitter:Proximante</li>
-                            <li>Facebook:Proximamente.</li>
-                        </ul>
-                    </div>
-                    <h6 class="copyr">© 2022. Todos los Derechos reservados.</h6>
+                  
                 </div>
-                
+                <h6 class="copyr">© 2022. Todos los Derechos reservados.</h6>
             </div>
-
+        </div> -->
+        <div class="localizacion">
+            <div id="resultado">
+            </div>
+            <button type="button" value="Ocultar localizacion" class="button" id="btnOcultarLocalizacion">X</button>
         </div>
-
     </footer>
 
-    <script src="sweetalert2.all.min.js"></script>
+    <!-- <script src="./sweetalert2.all.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.5.2/dist/sweetalert2.all.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script src="./script1.js"></script>
 </body>
