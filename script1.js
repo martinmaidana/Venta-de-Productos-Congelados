@@ -2,18 +2,21 @@
 let contenedor = document.getElementById("resultado");
 
 //capturamos la API desde JS . en este caso se trata de una API que segun el IP indicara la localizacion del usuario. al entrar al sitio.
-fetch(
-  "https://ipgeolocation.abstractapi.com/v1/?api_key=a89c7f53daa847a7a66f91d9a45730a7"
-)
-  //capturo la respuesta de la promesa. retorno la rta a json
+fetch("https://ipgeolocation.abstractapi.com/v1/?api_key=89bfc7a7a1f34c47aa526ab73232f76f&ip_address=2804:4d98:250:1e00:9c33:ee28:19fd:ca73")
   .then((response) => response.json())
-  //con un segundo then consumo la rta en json
-
   .then((data) => {
-    contenedor.innerHTML = `<div><img src="./assets/periscope.png" alt="iconmap" height="19px"> Estas en la Ciudad de : ${data.city}.  
-Provincia de : ${data.region}. Pais : ${data.country}. </div>`;
-    // .then(consola => console.log(consola))
+    //cargare una imagen svg
+    const svgUrl = data.flag.svg;
+
+    const banderaImagenHtml = `<img src="${svgUrl}" alt="bandera" height="35px">`
+    // Aquí puedes manejar la respuesta JSON
+        contenedor.innerHTML = `<div><img src="./assets/periscope.png" alt="iconmap" height="19px"> Estas en la Ciudad de : ${data.city}.  
+Provincia de : ${data.region}. Pais: ${data.country}. Continente: ${data.continent}. Codigo Postal: ${data.postal_code} Bandera: ${banderaImagenHtml}</div>`;
+ 
+    console.log(data);
   });
+
+
 
 const btnOcultarLocalizacion = document.getElementById(
   "btnOcultarLocalizacion"
