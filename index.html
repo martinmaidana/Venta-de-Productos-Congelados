@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.33/dist/sweetalert2.all.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="./style.css">
+    <!-- <style>
+        .colorazul {
+            color: rgb(60, 60, 135);
+        }
+
+        .fondoceleste {
+            background-color: #fe6f2f;
+            color: #319190;
+
+        }
+    </style> -->
+
+</head>
+
+<body>
+    <header>
+
+        <div class="titulos parent">
+            <div class="div1">
+                <img src="./assets/Sin título.png" alt="logo">
+            </div>
+            <div class="div2">
+                <div>
+                    <!-- <h1 id="titulo" >venta de congelados</h1> -->
+                </div>
+                <div class="subtitulos">
+                    <h2 id="subtitulo">Venta de productos congelados 2024</h2>
+                </div>
+            </div>
+            <div class="div3">
+                <div class="botones">
+
+                    <input type="text" placeholder="Ingrese su nombre" id="nombre_usuario">
+                    <button onclick="saludando()" type="submit" class="btnAceptar"><img src="./assets/programador.png"
+                            height="22px" alt="ingresar">INGRESAR</button>
+                    <button type="submit" onclick="localStorage.clear(), location.reload()" class="btnAceptar">REINICIAR STOCK</button>
+                    <br>
+                    <label for=""></label>
+
+                    <div id="ingresar_al_sistema">
+
+                    </div>
+
+
+                </div>
+                <img src="./assets/carrito-de-compras.png" alt="carrito" id="mostrar_carrito">
+            </div>
+
+        </div>
+
+    </header>
+    <main>
+
+
+        <aside class="aside">
+            <div class="listadovegetales">
+
+            </div>
+
+            <div class="separador" id="carrito">
+                <h2>Carrito</h2>
+                <div class="columnas">
+                    <h3>Producto</h3>
+                    <h3>Cantidad</h3>
+                    <h3>Precio</h3>
+                </div>
+
+                <div class="visual">
+
+                </div>
+                <div class="carro">
+                </div>
+                <div class="cuenta">
+                    <label>EL SUBTOTAL ES:</label>
+                    <input type="text" id="costoTotal">
+                    <button id="btnIrAPagar" type="submit">Ir a Pagar</button>
+                    <label id="total" for=""></label>
+                    <div class="mediosdepago hidden">
+                        <h3>MEDIOS DE PAGO</h3>
+                        <!-- MEDIOS DE PAGO. EFECTIVO O TARJETA = eot -->
+                        <input type="radio" name="eot" value="efectivo" id="btnEfectivo">
+                        <label for="">Debito(Incluye un 10% de descuento)</label>
+                        <br>
+                        <input type="radio" name="eot" value="cuotas">
+                        <label for="">Cuotas</label>
+                        <br>
+                        <br>
+                        <div class="pagoencuotas hidden">
+                            <input type="radio" name="pagoencuotas" value="3">
+                            <label for=""> 3 cuotas. 15% de interes.</label>
+                            <br>
+                            <input type="radio" name="pagoencuotas" value="6">
+                            <label for=""> 6 cuotas. 20% de interes.</label>
+                            <br>
+                            <input type="radio" name="pagoencuotas" value="9">
+                            <label for=""> 9 cuotas. 25% de interes.</label>
+                            <br>
+                            <input type="radio" name="pagoencuotas" value="12">
+                            <label for=""> 12 cuotas. 30% de interes.</label>
+                        </div>
+                    </div>
+                    <!-- <button id="btn_continuarCompra" type="submit">Quiero seguir comprando</button> -->
+                    <div class="totalCompra hidden">
+                        <label for=""></label>
+                        <input type="text" id="inputTotalCompra"></input>
+                        <button id="btnFinalizarCompra" class="">Finalizar Compra</button>
+                    </div>
+                </div>
+            </div>
+
+        </aside>
+
+    </main>
+    <footer>
+        <!-- <div class="footer">
+            <div>
+                <form action="" id="form">
+                    <label for="">Dudas o sugerencias</label>
+                    <br>
+                    <textarea name="" id="comentario" cols="30" rows="10"
+                        placeholder="Inserte su comentario"></textarea>
+                    <br>
+                    <button>Enviar</button>
+                    <br>
+                </form>
+            </div>
+
+            <div class="mediosyredes">
+                <div>
+                    <div id="redesfooter">
+
+                    </div>
+                  
+                </div>
+                <h6 class="copyr">© 2022. Todos los Derechos reservados.</h6>
+            </div>
+        </div> -->
+        <div class="localizacion">
+            <div id="resultado">
+            </div>
+            <button type="button" value="Ocultar localizacion" class="button" id="btnOcultarLocalizacion">X</button>
+        </div>
+    </footer>
+
+    <!-- <script src="./sweetalert2.all.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.5.2/dist/sweetalert2.all.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="./script1.js"></script>
+</body>
+
+</html>
